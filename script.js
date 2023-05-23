@@ -22,13 +22,12 @@
 // console.log(obj.hobbies)
 // console.log(obj['hobbies'])
 
-greet2('greet2',30)
-greet2('greet1',30)
-
+greet1('greet2',30)
 function greet1(Name,age){
     console.log('hello '+Name+' your age is '+age)
 }
 
+greet2('greet1',30)
 const greet2 = function(Name,age){
     console.log('hello '+Name+' your age is '+age)
 }
