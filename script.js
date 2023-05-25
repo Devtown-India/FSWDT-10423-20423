@@ -97,8 +97,8 @@
 //     callbackFunc(arr[i],i)
 // }
 
-const arr = [34,21,23]
-const newArr = []
+// const arr = [34,21,23]
+// const newArr = []
 
 // for(let i = 0;i<arr.length;i++){
 //     newArr.push(arr[i]*19)
@@ -137,9 +137,48 @@ const a = {
         console.log('hello !!')
     }
 }
-// const b = {}
-// for(let key in a){
-//     console.log(key)
+const b = {}
+// // for(let key in a){
+// //     console.log(key)
+// // }
+// console.log(Object.keys(a))
+// console.log(Object.values(a))
+
+// const reduceFunction = function(previousValue,currentItem){
+//     console.log(previousValue,currentItem)
+//     previousValue[currentItem] = a[currentItem]
+//     return previousValue
 // }
-console.log(Object.keys(a))
-console.log(Object.values(a))
+// const fibonacci = []
+
+// // Object.keys(a).reduce(reduceFunction,b)
+// // console.log(b)
+// Array(10).fill(0).reduce(function(prev,curr){
+//     console.log(prev,curr)
+//     fibonacci.push(prev)
+//     return prev+curr
+// },1)
+
+// const fibonacci = [1,1]
+// for(let i = 1;i<10;i++){
+//  fibonacci.push(fibonacci[i]+fibonacci[i-1])
+// }
+// console.log(fibonacci)
+
+const arr = [{name:'John',age:30},{name:'Doe',age:22},{name:'Jane',age:25},{name:'Jack',age:28}]
+
+const findfn = function(item,index){
+    if(item.name==='Jane'){
+        return true
+    }
+}
+const ele = arr.find(findfn)
+console.log(ele)
+
+// for(let i = 0;i<arr.length;i++){
+//     const item = arr[i]
+//     if(item.name==='Jane'){
+//         console.log('Jane found')
+//         break
+//     }
+// }
