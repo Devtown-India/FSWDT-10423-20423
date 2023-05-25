@@ -121,10 +121,25 @@ const newArr = []
 // }
 // console.log(res)
 
-const reduceFunction = function(previousValue,currentItem){
-    console.log(previousValue,currentItem)
-    return previousValue+currentItem
-}
+// const reduceFunction = function(previousValue,currentItem){
+//     console.log(previousValue,currentItem)
+//     return previousValue+currentItem
+// }
 
-const res2 = arr.reduce(reduceFunction,0)
-console.log(res2)
+// const res2 = arr.reduce(reduceFunction,0)
+// console.log(res2)
+
+const a = {
+    name:'John',
+    age: 30,
+    isMarried: false,
+    greet: function(){
+        console.log('hello !!')
+    }
+}
+// const b = {}
+// for(let key in a){
+//     console.log(key)
+// }
+console.log(Object.keys(a))
+console.log(Object.values(a))
