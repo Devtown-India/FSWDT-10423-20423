@@ -11,7 +11,7 @@
       *{
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
+        box-sizing: border-box;f
       }
       body{
         min-height: 100vh;
@@ -57,19 +57,49 @@
         color: blueviolet;
       }
     
+      div.container{
+        width:330px;
+        height:500px;
+        background-color: #111;
+        margin:20px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: space-between;
+      }
+
+      div.container div.button{
+        width:100px;
+        height:100px;
+        background-color: dodgerblue;
+        border-radius: 10px;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 600;
+      }
       
    
     </style>
 </head>
 
 <body class="" >
-  <button onclick="toggleTheme()" class="toggle">Change theme</button>
-  <h1 class="a b something" >todo list</h1>
-  <input type="text" name="" id="">
-  <button onclick="handleClick()" >Add</button>
-  <ul>
-
-  </ul>
+  <div class="container">
+    <div class="button">1</div>
+    <div class="button">1</div>
+    <div class="button">1</div>
+    <div class="button">1</div>
+    <div class="button">1</div>
+    <div class="button">1</div>
+    <div class="button">1</div>
+    <div class="button">1</div>
+    <div class="button">1</div>
+    <div class="button">1</div>
+    <div class="button">1</div>
+    <div class="button">1</div>
+  </div>
 </body>
 
 </html>
