@@ -15,17 +15,56 @@
       }
       body{
         min-height: 100vh;
-        transition: 0.9s ease-in background-color;
+        transition: 0.3s ease-in background-color;
+      }
+      .dark{
+        background-color: #111;
+        color: #fff;
+      }
+      .light{
+        background-color: #fff;
+        color: #333;
       }
       ul{
         margin:20px
       }
+
+      .lg{
+        font-size: 2rem;
+      }
+      .md{
+        font-size: 1.5rem;
+      }
+      .sm{
+        font-size: 1rem;
+      }
+
+      .red{
+        color:crimson;
+      }
+      .green{
+        color:lime;
+      }
+      .blue{
+        color:dodgerblue;
+      }
+
+      body h1{
+        color: #111;
+      }
+
+      body.dark h1{
+        color: blueviolet;
+      }
+    
+      
    
     </style>
 </head>
 
-<body>
-  <h1>todo list</h1>
+<body class="" >
+  <button onclick="toggleTheme()" class="toggle">Change theme</button>
+  <h1 class="a b something" >todo list</h1>
   <input type="text" name="" id="">
   <button onclick="handleClick()" >Add</button>
   <ul>

@@ -5,6 +5,16 @@ const content = document.querySelector('p')
 const list = document.querySelector('ul')
 const input = document.querySelector('input')
 
+const toggleTheme = ()=>{
+    body.classList.toggle('dark')
+}
+
+// console.log(heading.classList)
+// heading.classList.add('red')
+// heading.classList.add('sm')
+// console.log(heading.classList)
+
+
 // todos.forEach((todo)=>{
     // const li = document.createElement('li')
     // li.innerHTML=todo
@@ -12,17 +22,17 @@ const input = document.querySelector('input')
     // list.appendChild(li)    
 // })
 
-const handleClick = ()=>{
-    const data = input.value
-    if(data===''){
-        return alert('Please enter a value')
-    }
-    console.log(input.value)
-    const li = document.createElement('li')
-    li.innerHTML=input.value
-    console.log(li)
-    list.appendChild(li)   
-}
+// const handleClick = ()=>{
+//     const data = input.value
+//     if(data===''){
+//         return alert('Please enter a value')
+//     }
+//     console.log(input.value)
+//     const li = document.createElement('li')
+//     li.innerHTML=input.value
+//     console.log(li)
+//     list.appendChild(li)   
+// }
 
 
 // const li = document.createElement('li')
