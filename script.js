@@ -1,29 +1,11 @@
-const body = document.querySelector('body');
-const textbox = document.querySelector('h1 span');
-const heading = document.querySelector('h1');
-const input = document.querySelector('input');
+const progressbar = document.querySelector("#progress")
+const container = document.querySelector(".content")
+const contentHeight = container.scrollHeight
 
-window.addEventListener('focus',(e)=>{
-    console.log('tab change detected')
+window.addEventListener("scroll", () => {
+    const scrollTop = document.documentElement.scrollTop || document.body.scrollTop
+    const scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight
+    const clientHeight = document.documentElement.clientHeight
+    const scrolled = scrollTop / (scrollHeight - clientHeight) * 100
+    progressbar.style.width = `${scrolled}%`
 })
-window.addEventListener('blur',(e)=>{
-    console.log('blur change detected')
-})
-
-window.addEventListener('scroll',(e)=>{
-    console.log('scroll detected',window.scrollY)
-})
-
-
-// let count = 0;
-// heading.addEventListener('click',(event)=>{
-//     console.log(event)
-//     textbox.innerText = ++count;
-// })
-
-// body.addEventListener('mousemove',(event)=>{
-//     console.log({
-//         x: event.clientX,
-//         y: event.clientY
-//     })
-// })
