@@ -5,10 +5,7 @@ const scrollHeight = document.documentElement.scrollHeight
 
 
 
-window.addEventListener("scroll", () => {
-    const scrollTop = window.scrollY
-    const clientHeight = document.documentElement.clientHeight
-    const scrolled = scrollTop / (scrollHeight-clientHeight) * 100
-
-    progressbar.style.width = `${scrolled}%`
+window.addEventListener("paste", () => {
+    
+  alert("Please don't copy my content")
 })
