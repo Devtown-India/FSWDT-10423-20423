@@ -22,7 +22,9 @@ let todos = [
   },
 ];
 
-const generateTodo = (title,complete=false) => complete?`   <div
+const generateTodo = ({ title, id, completed }) =>
+  completed
+    ? `   <div
 id="task"
 class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4 border-l-transparent"
 >
@@ -45,7 +47,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
   </div>
   <div class="text-slate-500 line-through">${title}</div>
 </div>
-<div>
+<div onClick="handleDelete('${id}')"  >
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -61,7 +63,8 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
     />
   </svg>
 </div>
-</div>`:`   <div
+</div>`
+    : `   <div
 id="task"
 class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4 border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150"
 >
@@ -84,7 +87,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
   </div>
   <div>${title}</div>
 </div>
-<div>
+<div onClick="handleDelete('${id}')" >
   <svg
     xmlns="http://www.w3.org/2000/svg"
     fill="none"
@@ -100,7 +103,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
     />
   </svg>
 </div>
-</div>`
+</div>`;
 
 const randomId = () => {
   var firstPart = (Math.random() * 46656) | 0;
@@ -110,16 +113,36 @@ const randomId = () => {
   return firstPart + secondPart;
 };
 
-const renderList = ()=>{
-    todos.forEach(todo=>{
-        const node = document.createElement("div");
-        node.innerHTML = generateTodo(todo.title,todo.completed);
-        list.appendChild(node);
-    })
-}
+const renderList = () => {
+  list.innerHTML =
+    todos.length === 0
+      ? `<div class='text-center text-blue-500' >Add todos to get started</div>`
+      : "";
+  todos.forEach((todo) => {
+    const node = document.createElement("div");
+    node.innerHTML = generateTodo(todo);
+    list.appendChild(node);
+  });
+};
+
+const addTodo = () => {
+  if (input.value === "") return alert("Please enter a todo");
+  const todo = {
+    id: randomId(),
+    title: input.value,
+    completed: false,
+  };
+  todos.push(todo);
+  input.value = "";
+  renderList();
+};
+
+const handleDelete = (id) => {
+  const filteredTodos = todos.filter((todo) => todo.id !== id);
+  todos = filteredTodos;
+  renderList();
+};
+
+addTodoBtn.addEventListener("click", addTodo);
 
 renderList();
-
-const addTodo = () => {};
-
-addTodoBtn.addEventListener("click", () => {});
