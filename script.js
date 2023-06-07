@@ -29,7 +29,7 @@ id="task"
 class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4 border-l-transparent"
 >
 <div class="inline-flex items-center space-x-2">
-  <div>
+  <div onClick="markAsComplete('${id}')">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -69,7 +69,7 @@ id="task"
 class="flex justify-between items-center border-b border-slate-200 py-3 px-2 border-l-4 border-l-transparent bg-gradient-to-r from-transparent to-transparent hover:from-slate-100 transition ease-linear duration-150"
 >
 <div class="inline-flex items-center space-x-2">
-  <div>
+  <div onClick="markAsComplete('${id}')">
     <svg
       xmlns="http://www.w3.org/2000/svg"
       fill="none"
@@ -140,6 +140,11 @@ const addTodo = () => {
 const handleDelete = (id) => {
   const filteredTodos = todos.filter((todo) => todo.id !== id);
   todos = filteredTodos;
+  renderList();
+};
+const markAsComplete = (id) => {
+  const todo = todos.find(todo=>todo.id===id)
+  todo.completed = !todo.completed;
   renderList();
 };
 
