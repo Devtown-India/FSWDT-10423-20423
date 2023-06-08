@@ -22,6 +22,9 @@ let todos = [
   },
 ];
 
+let mode = "add",
+  selectedId = null;
+
 const generateTodo = ({ title, id, completed }) =>
   completed
     ? `   <div
@@ -45,7 +48,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
       />
     </svg>
   </div>
-  <div class="text-slate-500 line-through">${title}</div>
+  <div onClick="handleEdit('${id}')" class="text-slate-500 line-through">${title}</div>
 </div>
 <div onClick="handleDelete('${id}')"  >
   <svg
@@ -85,7 +88,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
       />
     </svg>
   </div>
-  <div>${title}</div>
+  <div onClick="handleEdit('${id}')">${title}</div>
 </div>
 <div onClick="handleDelete('${id}')" >
   <svg
@@ -142,12 +145,43 @@ const handleDelete = (id) => {
   todos = filteredTodos;
   renderList();
 };
+
+const handleEdit = (id) => {
+  console.log(id);
+  const todo = todos.find((todo) => todo.id === id);
+  input.value = todo.title;
+  addTodoBtn.innerHTML = "Edit";
+  mode = "edit";
+  selectedId = id;
+};
+
 const markAsComplete = (id) => {
-  const todo = todos.find(todo=>todo.id===id)
+  const todo = todos.find((todo) => todo.id === id);
   todo.completed = !todo.completed;
   renderList();
 };
 
-addTodoBtn.addEventListener("click", addTodo);
+const editTodo = () => {
+  if (input.value === "") return alert("Please enter a todo");
+  const todo = todos.find((todo) => todo.id === selectedId);
+  todo.title = input.value;
+  renderList()
+  input.value = "";
+  selectedId=null;
+  mode="add"
+  addTodoBtn.innerHTML = "Add";
+};
 
+addTodoBtn.addEventListener("click", () =>
+  mode === "add" ? addTodo() : editTodo()
+);
+
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    input.value = "";
+    addTodoBtn.innerHTML = "Add";
+    mode = "add";
+    selectedId = null;
+  }
+});
 renderList();
