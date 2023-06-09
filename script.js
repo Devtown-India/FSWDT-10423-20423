@@ -23,7 +23,7 @@
 
 // console.log(3)
 
-setTimeout(()=>console.log('hi'),1000)
-setTimeout(()=>console.log('bye'),2000)
+setTimeout(()=>console.log('hi'),2000)
+setTimeout(()=>console.log('bye'),1000)
 
 console.log('12e')
