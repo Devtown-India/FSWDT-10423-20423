@@ -1,26 +1,27 @@
-const ul = document.createElement("ul");
-document.body.appendChild(ul);
+const appId = ''
+const appKey= ''
 
-// fetch('https://jsonplaceholder.typicode.com/todos')
-// .then(response=>response.json())
-// .then(data=>{
-//   data.forEach(todo=>{
-//     const li = document.createElement('li')
-//     li.innerHTML = todo.title
-//     ul.appendChild(li)
-//   })
-// })
+const input = document.querySelector('input')
+const button = document.querySelector('button')
 
-const fetchData = async () => {
+const searchRecipe = async()=>{
   try {
-    const res = await fetch("https://jsonplaceholder.typicode.com/todos");
-    const data = await res.json();
-    console.log(data);
-  } catch (error) {
-    console.log(error);
-  }finally{
-    console.log('finally')
-  }
-};
+    button.disabled = true
+    button.textContent = 'Searching...'
 
-fetchData();
+    const query = input.value
+    const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${appId}&app_key=${appKey}`
+
+    const response = await fetch(url)
+    const data = await response.json()
+    console.log(data)
+  } catch (error) {
+    console.log(error)
+  }finally{
+    button.disabled = false
+    button.textContent = 'Search'
+
+  }
+}
+
+button.addEventListener('click', searchRecipe)
