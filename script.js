@@ -8,19 +8,20 @@ title: string
 completed: boolean
 id: string
 */
+const loadTodos = () => {
+  const todos = JSON.parse(localStorage.getItem('storedTodos'))
+  if(todos.length===0 || !todos){
+    return []
+  }else{
+    return todos
+  }
+}
 
-let todos = [
-  {
-    id: "r3lw42",
-    title: "Learn JS",
-    completed: false,
-  },
-  {
-    id: "eqf667",
-    title: "Learn React",
-    completed: true,
-  },
-];
+let todos = loadTodos()
+
+
+
+
 
 let mode = "add",
   selectedId = null;
@@ -136,6 +137,7 @@ const addTodo = () => {
     completed: false,
   };
   todos.push(todo);
+  localStorage.setItem('storedTodos', JSON.stringify(todos));
   input.value = "";
   renderList();
 };
