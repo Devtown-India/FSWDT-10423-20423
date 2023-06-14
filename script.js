@@ -1,17 +1,25 @@
-const heading = document.createElement('h1')
-heading.innerHTML = '0'
-let timer = setInterval(()=>{
-  heading.innerHTML = ++count;
-},1000)
-let count = 0
 
-const stop = document.createElement('button')
-stop.innerHTML = 'Stop'
-document.body.append(stop)
 
-stop.addEventListener('click',()=>{
-    clearInterval(timer)
+
+navigator.mediaDevices.getUserMedia({video: true}).then(function(mediaStream) {
+
 })
-document.body.append(heading)
 
 
+// const button = document.querySelector('button')
+
+// const handleClick = async ()=>{
+//   try {
+//     const res = await fetch('https://api.quotable.io/random')
+//     const {content} = await res.json()
+//     navigator.clipboard.writeText(content)
+//   } catch (error) {
+//     console.log(error)
+//   }
+// }
+
+// document.addEventListener('copy', ()=>{
+//   navigator.clipboard.writeText("DONT steal our content")
+// })
+
+// button.addEventListener('click', handleClick)
