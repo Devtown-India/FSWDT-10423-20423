@@ -1,25 +1,14 @@
+// api that returns us the position & stats of the ISS
 
+const getData = async ()=>{
+    try {
+        const res = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
+        const {latitude:lat,longitude:lon,velocity:speed,altitude:alt} = await res.json();
+        console.log({lat,lon,speed,alt});
+        return {lat,lon,speed,alt};
+    } catch (error) {
+        console.log(error);
+    }
+}
 
-
-navigator.mediaDevices.getUserMedia({video: true}).then(function(mediaStream) {
-
-})
-
-
-// const button = document.querySelector('button')
-
-// const handleClick = async ()=>{
-//   try {
-//     const res = await fetch('https://api.quotable.io/random')
-//     const {content} = await res.json()
-//     navigator.clipboard.writeText(content)
-//   } catch (error) {
-//     console.log(error)
-//   }
-// }
-
-// document.addEventListener('copy', ()=>{
-//   navigator.clipboard.writeText("DONT steal our content")
-// })
-
-// button.addEventListener('click', handleClick)
+getData()
