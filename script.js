@@ -1,10 +1,38 @@
 // api that returns us the position & stats of the ISS
 
+
+
+// lat lon
+var map = L.map('map').setView([28.70, 77.10], 1);
+
+var myIcon = L.icon({
+    iconUrl: 'https://www.svgrepo.com/show/440494/international-space-station.svg',
+    iconSize: [38, 95],
+});
+
+const marker = L.marker([28.70, 77.10],{
+    icon: myIcon
+}).addTo(map)
+.openPopup();
+
+L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19,
+    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+}).addTo(map);
+
+
+
 const getData = async ()=>{
     try {
         const res = await fetch('https://api.wheretheiss.at/v1/satellites/25544');
         const {latitude:lat,longitude:lon,velocity:speed,altitude:alt} = await res.json();
-        console.log({lat,lon,speed,alt});
+        L.circle([lat,lon], {
+            color: 'black',
+            fillColor: '#111',
+            fillOpacity: 0.5,
+            radius: 5
+        }).addTo(map);
+        marker.setLatLng([lat,lon]);
         return {lat,lon,speed,alt};
     } catch (error) {
         console.log(error);
@@ -12,10 +40,3 @@ const getData = async ()=>{
 }
 
 setInterval(getData,1000);
-
-// lat lon
-var map = L.map('map').setView([28.70, 77.10], 13);
-L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    maxZoom: 19,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-}).addTo(map);
