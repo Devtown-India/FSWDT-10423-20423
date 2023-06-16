@@ -2,16 +2,16 @@
 
 
 
-// lat lon
+// lat lon and zoom level
 var map = L.map('map').setView([28.70, 77.10], 1);
 
-var myIcon = L.icon({
+var customIcon = L.icon({
     iconUrl: 'https://www.svgrepo.com/show/440494/international-space-station.svg',
     iconSize: [38, 95],
 });
 
 const marker = L.marker([28.70, 77.10],{
-    icon: myIcon
+    icon: customIcon
 }).addTo(map)
 .openPopup();
 
