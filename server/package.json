@@ -4,7 +4,8 @@
   "description": "package for FSWD-10423-20423 batch",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start":"node index.js",
+    "dev":"nodemon index.js"
   },
   "author": "kartik",
   "license": "MIT",
