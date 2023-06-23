@@ -21,10 +21,10 @@ app.get('/',(req,res)=>{
 
 app.get('/todos',async (req,res)=>{
     try {
+        const {count=10} = req.query
         const todos = await fs.readFile('./db.json','utf-8')
         const parsedTodos = JSON.parse(todos)
-        console.log(todos)
-        res.status(200).json(parsedTodos)
+        res.status(200).json(parsedTodos.slice(0,count))
     } catch (error) {
         console.log(error)
         res.status(500).json(error)
