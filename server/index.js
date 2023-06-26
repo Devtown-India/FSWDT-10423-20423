@@ -19,6 +19,26 @@ const logger = async (req, res, next) => {
   next();
 };
 
+/// validate the token and if token is invalid then throw the error
+const isAuthorised = async (req,res,next) => {
+  try {
+    const { token } = req.query;
+    if (!token) {
+      return res.status(401).json({ message: "Token is required" });
+    }
+    const users = await fs.readFile("./users.json", "utf-8");
+    const parsedUsers = JSON.parse(users);
+    const user = parsedUsers.find((user) => user.token === token);
+    if (!user) {
+      return res.status(401).json({ message: "invalid token" });
+    }
+    req.user = user;
+    next()
+  } catch (error) {
+    return res.status(500).json({ message: "something went wrong" });
+  }
+};
+
 app.use(express.json());
 // app.use(logger);
 
@@ -53,18 +73,12 @@ app.post("/signup", async (req, res) => {
   }
 });
 
-app.get("/todos", async (req, res) => {
+app.get("/todos", isAuthorised,async (req, res) => {
   try {
-    const { count = 10, token } = req.query;
-    if (!token) {
-      return res.status(401).json({ message: "Token is required" });
-    }
-    const users = await fs.readFile("./users.json", "utf-8");
-    const parsedUsers = JSON.parse(users);
-    if (!parsedUsers.find((user) => user.token === token)) {
-      return res.status(401).json({ message: "invalid token" });
-    }
-
+    const {id,email} = req.user
+// get the user id or email from the token and then get the todos of that user
+    const { count = 10 } = req.query;
+    console.log(req.user);
     const todos = await fs.readFile("./db.json", "utf-8");
     const parsedTodos = JSON.parse(todos);
     res.status(200).json(parsedTodos.slice(0, count));
