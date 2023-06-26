@@ -5,8 +5,8 @@ const PORT = 8080
 // expres instance
 const app = express()
 
-app.get('/',(req,res)=>{
-    // console.log(req)
+const logger = async(req,res,next)=>{
+    // do something
     const {headers,method,url,path,query} = req
     console.log({
         headers,
@@ -15,6 +15,15 @@ app.get('/',(req,res)=>{
         path,
         query
     })
+next()
+}
+
+app.use(logger)
+
+
+app.get('/',(req,res)=>{
+    // console.log(req)
+   
     res.status(200).send('SErver is running')
 })
 
