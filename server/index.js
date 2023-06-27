@@ -1,10 +1,64 @@
 const express = require("express");
 const fs = require("fs/promises");
 const uuid = require("uuid");
+const bcrypt = require("bcryptjs");
+const { addToDb } = require("./utils");
 
 const PORT = 8080;
 // expres instance
 const app = express();
+app.use(express.json());
+
+// auth endpoints
+
+app.post('/api/auth/signup',async(req,res)=>{
+  try {
+    // validate the req body
+    const {email,password,username} = req.body;
+    if(!email || !password || !username){
+      return res.status(400).json({
+        message:'Please provide all required fields',
+        success:false
+      })
+    }
+    // check if user already exists
+    const users = await fs.readFile('./db/users.json','utf8');
+    const parsedUsers = JSON.parse(users);
+    if(parsedUsers.find(user=>user.email === email)){
+      return res.status(400).json({
+        message:'User already exists',
+        success:false
+      })
+    }
+    // validate the username
+    if(parsedUsers.find(user=>user.username === username)){
+      return res.status(400).json({
+        message:'Username already taken',
+        success:false
+      })
+    }
+    // write to the DB
+    const salt = await bcrypt.genSalt(10);
+    console.log(salt)
+    const hashedPassword = await bcrypt.hash(password,salt);
+    const newUser = {
+      id:uuid.v4(),
+      email,
+      username,
+      password:hashedPassword
+    }
+    await addToDb(newUser,'./db/users.json');
+    return res.json({
+      ...newUser
+    })
+  } catch (error) {
+    console.log(error)
+    res.status(500).json({
+      message: 'Internal server error',
+      success:false
+    })
+  }
+})
 
 app.get('/todo/:id',(req,res)=>{
   const {name} = req.params;
