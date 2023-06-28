@@ -3,6 +3,8 @@ const fs = require("fs/promises");
 const uuid = require("uuid");
 const bcrypt = require("bcryptjs");
 const { addToDb } = require("./utils");
+const { generateToken } = require("./utils/auth");
+const { isAuthorised } = require("./middlewares");
 
 const PORT = 8080;
 // expres instance
@@ -39,7 +41,11 @@ app.post("/api/auth/login", async (req, res) => {
         success: false,
       });
     }
-    const token = "sadf";
+    const token = generateToken({
+      email:user.email,
+      id:user.id,
+      username:user.username
+    })
     return res.json({
       data: {
         token,
@@ -106,6 +112,21 @@ app.post("/api/auth/signup", async (req, res) => {
     });
   }
 });
+
+// todo enpoints
+app.get("/api/todos", isAuthorised ,async (req, res) => {
+  try {
+    console.log(req.user)
+    return res.send('todos')
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({
+      message: "Internal server error",
+      success: false,
+    });
+  }
+});
+
 
 app.get("/todo/:id", (req, res) => {
   const { name } = req.params;

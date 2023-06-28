@@ -13,4 +13,6 @@ const addToDb = async (data, path) => {
     }
 }
 
+
+
 module.exports.addToDb = addToDb;
