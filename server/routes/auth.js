@@ -3,6 +3,7 @@ const fs = require("fs/promises");
 const uuid = require("uuid");
 const bcrypt = require("bcryptjs");
 const { generateToken } = require('../utils/auth');
+const { addToDb } = require('../utils/')
 
 const router = express.Router()
 
