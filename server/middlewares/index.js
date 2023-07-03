@@ -13,7 +13,7 @@ module.exports.isAuthorised = (req,res,next)=>{
         req.user = decodedToken
         next()
     } catch (error) {
-        return res.json({
+        return res.status(401).json({
             message:error.message,
             success:false
         })
