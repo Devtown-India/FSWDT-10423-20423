@@ -3,7 +3,7 @@ const secret = "TOP_SECRET*@(#($@#"
 
 module.exports.generateToken = (payload)=>{
     return jwt.sign(payload,secret,{
-        expiresIn:'1h'
+        expiresIn:'10s'
     })
 }
 

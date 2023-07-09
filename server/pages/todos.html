@@ -21,6 +21,7 @@
   </head>
 
   <body class="antialiased bg-slate-200 text-slate-700 mx-2">
+    <button class="underline" onclick="logout()">Logout</button>
     <div
       class="max-w-lg mx-auto my-10 bg-white p-8 rounded-xl shadow shadow-slate-300"
     >
@@ -77,6 +78,10 @@
       </p>
     </div>
     <script>
+      const token = localStorage.getItem("token");
+      if (!token) {
+        window.location.href = "/login";
+      }
       const addTodoBtn = document.querySelector("button.add-todo");
       const input = document.querySelector("input.add-todo");
       const list = document.querySelector("#tasks");
@@ -87,16 +92,31 @@ title: string
 completed: boolean
 id: string
 */
-      const loadTodos = () => {
-        const todos = JSON.parse(localStorage.getItem("storedTodos")) ?? [];
-        if (todos.length === 0 || !todos) {
-          return [];
-        } else {
-          return todos;
+      const logout = () => {
+        localStorage.removeItem("token");
+        window.location.href = "/login";
+      };
+      const loadTodos = async () => {
+        try {
+          const response = await axios.get("/api/todos", {
+            headers: {
+              authorization: `${token}`,
+            },
+          });
+          const { data } = response.data;
+          console.log(data);
+          renderList(data);
+        } catch (error) {
+          if (error.response.status === 401) {
+            console.log("Unauthorized")
+            window.location.href = "/login";
+            localStorage.removeItem('token')
+          }
         }
       };
+      loadTodos();
 
-      let todos = loadTodos();
+      // let todos = loadTodos();
 
       let mode = "add",
         selectedId = null;
@@ -192,7 +212,7 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
         return firstPart + secondPart;
       };
 
-      const renderList = () => {
+      const renderList = (todos = []) => {
         list.innerHTML =
           todos.length === 0
             ? `<div class='text-center text-blue-500' >Add todos to get started</div>`
@@ -204,17 +224,25 @@ class="flex justify-between items-center border-b border-slate-200 py-3 px-2 bor
         });
       };
 
-      const addTodo = () => {
-        if (input.value === "") return alert("Please enter a todo");
-        const todo = {
-          id: randomId(),
-          title: input.value,
-          completed: false,
-        };
-        todos.push(todo);
-        localStorage.setItem("storedTodos", JSON.stringify(todos));
-        input.value = "";
-        renderList();
+      const addTodo = async () => {
+        try {
+          if (input.value === "") return alert("Please enter a todo");
+          const response = await axios.post(
+            "/api/todos",
+            {
+              title: input.value,
+            },
+            {
+              headers: {
+                authorization: token,
+              },
+            }
+          );
+          loadTodos();
+        } catch (error) {
+          // if status code is 401
+        
+        }
       };
 
       const handleDelete = (id) => {

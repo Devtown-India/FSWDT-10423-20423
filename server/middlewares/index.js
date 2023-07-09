@@ -5,7 +5,7 @@ module.exports.isAuthorised = (req,res,next)=>{
         const token = req.headers.authorization
         const decodedToken = verifyToken(token)
         if(!decodedToken){
-            return res.json({
+            return res.status(401).json({
                 message:'unauthorised',
                 success:false
             })
