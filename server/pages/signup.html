@@ -99,6 +99,10 @@
       </div>
     </section>
     <script>
+      const token = localStorage.getItem("token");
+      if (token) {
+        window.location.href = "/";
+      }
       const form = document.querySelector("form");
       const handleSubmit = async (e) => {
         try {
