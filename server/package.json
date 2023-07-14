@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "package for FSWD-10423-20423 batch",
   "main": "index.js",
+  "type":"module",
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
