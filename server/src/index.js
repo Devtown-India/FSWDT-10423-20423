@@ -1,1 +1,4 @@
-console.log('hi')
+import {random} from './random.js'
+
+
+console.log(random())

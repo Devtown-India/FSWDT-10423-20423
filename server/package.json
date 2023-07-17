@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon index.js"
+    "dev": "nodemon index.js",
+    "build": "./node_modules/.bin/babel src --out-dir dist"
   },
   "author": "kartik",
   "license": "MIT",
@@ -14,6 +15,7 @@
     "bcryptjs": "^2.4.3",
     "express": "^4.18.2",
     "jsonwebtoken": "^9.0.0",
+    "nanoid": "^4.0.2",
     "uuid": "^9.0.0"
   },
   "devDependencies": {
@@ -24,7 +26,6 @@
     "babel-loader": "8.2.3",
     "nodemon": "^2.0.22",
     "nodemon-webpack-plugin": "^4.8.1",
-    "rimraf": "3.0.2",
     "webpack": "5.64.3",
     "webpack-cli": "4.9.1",
     "webpack-dev-server": "4.5.0"
