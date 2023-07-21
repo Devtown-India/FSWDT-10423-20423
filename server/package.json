@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index.js",
     "build": "webpack --config webpack.config.js --mode production",
-    "dev":"nodemon --exec babel-node src/index.js"
+    "dev":"webpack --config webpack.config.js --mode development -w"
   },
   "author": "kartik",
   "license": "MIT",
