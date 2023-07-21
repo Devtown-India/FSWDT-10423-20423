@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "build": "./node_modules/.bin/babel src --out-dir dist",
+    "build": "webpack --config webpack.config.js --mode production",
     "dev":"nodemon --exec babel-node src/index.js"
   },
   "author": "kartik",
