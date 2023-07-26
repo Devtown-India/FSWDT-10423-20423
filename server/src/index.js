@@ -1,6 +1,7 @@
 import express from "express";
 import randomRoutes from './routes/auth.js'
 
+
 const app = express();
 
 app.use('/random',randomRoutes)
