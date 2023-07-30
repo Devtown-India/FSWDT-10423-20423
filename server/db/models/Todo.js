@@ -18,3 +18,7 @@ const TodoSchema = new mongoose.Schema({
         ref: 'User',
     }
 })
+
+const Todo = mongoose.model('Todo',TodoSchema);
+
+module.exports = {Todo};
