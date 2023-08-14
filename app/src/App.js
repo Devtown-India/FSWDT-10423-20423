@@ -1,6 +1,6 @@
-const Header = ()=>{
-  return <h1>Task List</h1>
-}
+import Footer from "./components/Footer"
+import Header from "./components/Header"
+
 
 const Content = ()=>{
   const tasks = ['task 1', 'task 2', 'task 3']
@@ -13,11 +13,6 @@ const Content = ()=>{
       }
     </div>
   )
-}
-
-const Footer = ()=>{
-  const currentYear = new Date().getFullYear()
-  return <p>Footer {currentYear}</p>
 }
 
 const App = () => {
