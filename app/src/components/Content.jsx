@@ -30,10 +30,6 @@ const Content = () => {
     setItem("");
   };
 
-  //   const handleDelete = (id) => {
-  //     console.log(id);
-  //   };
-
   const handleDelete = (id) => {
     setTodos((prev) => {
       return prev.filter((todo) => todo.id !== id);
