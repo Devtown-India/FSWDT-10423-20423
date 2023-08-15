@@ -1,19 +1,31 @@
 import { useState } from "react";
 
 const Content = () => {
-  //   let count = 0;
-  let [count, setCount] = useState(0);
-  //! state is immutable
+  const [todos, setTodos] = useState([
+    {
+      title: "Learn React",
+      completed: false,
+    },
+  ]);
 
-  const increment = (e) => {
-    setCount((prev) => prev + 1);
-    console.log(count);
+  const handleChange = (e) => {
+    console.log(e.target.value);
   };
 
   return (
     <div>
-      <h1>{count}</h1>
-      <button onClick={increment}>Inc</button>
+      <h4>
+        {todos.length > 0
+          ? `You have ${todos.length} todos`
+          : "Add todos to get started !!!"}
+      </h4>
+      <input onChange={handleChange} type="text" />
+      <button>Add</button>
+      <div>
+        {todos.map((todo, index) => (
+          <li>{todo.title}</li>
+        ))}
+      </div>
     </div>
   );
 };
