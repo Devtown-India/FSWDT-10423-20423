@@ -1,5 +1,10 @@
 const Header = () => {
-  return <h1>Task List</h1>;
+  return (
+    <div>
+      <input type="text" />
+      <button>Add</button>
+    </div>
+  );
 };
 
 export default Header;
