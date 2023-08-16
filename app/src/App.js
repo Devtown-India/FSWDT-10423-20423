@@ -2,6 +2,9 @@ import { useState } from "react";
 import Header from "./components/Header";
 import Recipe from "./components/Recipe";
 
+const appId = "f98d4788";
+const appKey = "0105810e95442a333725e749c4a4c913";
+
 const App = () => {
 
   const [recipes,setRecipes] = useState([])
@@ -11,8 +14,6 @@ const App = () => {
     try {
       setLoader(true);
       setRecipes([]);
-      const appId = "f98d4788";
-      const appKey = "0105810e95442a333725e749c4a4c913";
       const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${appId}&app_key=${appKey}`;
       const response = await fetch(url);
       const data = await response.json();
@@ -28,9 +29,6 @@ const App = () => {
     <div>
       <h1>Recipe application</h1>
       <Header loader={loader} handleSearch={handleSearch}/>
-      {/* {
-        loader && <h1>Loading...</h1>
-      } */}
       {
         recipes.map(({recipe},index) => <Recipe recipe={recipe} />)
       }
