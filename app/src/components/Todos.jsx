@@ -1,9 +1,10 @@
-const Todos = ({ todos, greet }) => {
-  greet();
+const Todos = ({ todos, handleDelete }) => {
   return (
     <div>
       {todos.map((todo) => (
-        <div>{todo.title}</div>
+        <div>
+          {todo.title} <button onClick={() => handleDelete(todo.id)}>x</button>{" "}
+        </div>
       ))}
     </div>
   );
