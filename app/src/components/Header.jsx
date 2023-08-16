@@ -1,13 +1,15 @@
 import { useState } from "react";
 
-const Header = ({ handleAdd }) => {
-  const [inputText, setInputText] = useState("");
-  const handleChange = (e) => setInputText(e.target.value);
-
+const Header = ({ handleSearch, loader }) => {
+  const [query, setQuery] = useState("");
+  const handleChange = (e) => setQuery(e.target.value);
+  const onSearch = () => handleSearch(query);
   return (
     <div>
       <input onChange={handleChange} type="text" />
-      <button onClick={() => handleAdd(inputText)}>Add</button>
+      <button disabled={loader} onClick={onSearch}>
+        {loader ? "Loading..." : "Search"}
+      </button>
     </div>
   );
 };

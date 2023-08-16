@@ -1,30 +1,41 @@
-import {useState} from 'react'
-import Header from './components/Header';
-import Todos from './components/Todos';
-
-const randomid = () => {
-  return Math.floor(Math.random() * 10000) + 1
-}
+import { useState } from "react";
+import Header from "./components/Header";
+import Recipe from "./components/Recipe";
 
 const App = () => {
-  const [todos, setTodos] = useState([])
 
-  const handleAdd = (todo)=>{
-    const newTodo = {id:randomid(), title:todo, completed:false}
-    setTodos([...todos, newTodo])
-  }
+  const [recipes,setRecipes] = useState([])
+  const [loader,setLoader] = useState(false)
 
-  const handleDelete = (id)=>{
-    setTodos(todos.filter(todo=>todo.id!==id))
-  }
-
-  return ( 
+  const handleSearch = async (query) => {
+    try {
+      setLoader(true);
+      setRecipes([]);
+      const appId = "f98d4788";
+      const appKey = "0105810e95442a333725e749c4a4c913";
+      const url = `https://api.edamam.com/api/recipes/v2?type=public&q=${query}&app_id=${appId}&app_key=${appKey}`;
+      const response = await fetch(url);
+      const data = await response.json();
+      setRecipes(data.hits);
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }finally{
+      setLoader(false);
+    }
+  };
+  return (
     <div>
-      <h1>todolist</h1>
-      <Header handleAdd={handleAdd}/>
-      <Todos handleDelete={handleDelete} todos={todos} />
+      <h1>Recipe application</h1>
+      <Header loader={loader} handleSearch={handleSearch}/>
+      {/* {
+        loader && <h1>Loading...</h1>
+      } */}
+      {
+        recipes.map(({recipe},index) => <Recipe recipe={recipe} />)
+      }
     </div>
-   );
-}
- 
+  );
+};
+
 export default App;
