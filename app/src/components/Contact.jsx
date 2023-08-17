@@ -2,14 +2,11 @@ const Contact = ({ setRoute }) => {
   return (
     <>
       <h1>Contact</h1>
-      <a style={{ textDecoration: "underline" }} onClick={() => setRoute("/")}>
+      <a style={{ textDecoration: "underline" }} href="/">
         Home
       </a>
       <br />
-      <a
-        style={{ textDecoration: "underline" }}
-        onClick={() => setRoute("/about")}
-      >
+      <a style={{ textDecoration: "underline" }} href="/about">
         About
       </a>
     </>

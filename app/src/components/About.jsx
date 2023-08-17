@@ -2,14 +2,11 @@ const About = ({ setRoute }) => {
   return (
     <>
       <h1>About</h1>
-      <a style={{ textDecoration: "underline" }} onClick={() => setRoute("/")}>
+      <a style={{ textDecoration: "underline" }} href="/">
         Home
       </a>
       <br />
-      <a
-        style={{ textDecoration: "underline" }}
-        onClick={() => setRoute("/contact")}
-      >
+      <a style={{ textDecoration: "underline" }} href="/contact">
         Contact
       </a>
     </>
