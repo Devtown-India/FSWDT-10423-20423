@@ -1,18 +1,16 @@
+import { Link } from "react-router-dom";
+
 const Home = ({ setRoute }) => {
   return (
     <>
       <h1>Home</h1>
-      <button
-        onClick={() =>
-          window.history.pushState({ page: "Contact" }, null, "/contact")
-        }
-      >
-        COntact
-      </button>
-      <br />
-      <a style={{ textDecoration: "underline" }} href="/about">
+      <Link style={{ textDecoration: "underline" }} to="/about">
         About
-      </a>
+      </Link>
+      <br />
+      <Link style={{ textDecoration: "underline" }} to="/contact">
+        Contact
+      </Link>
     </>
   );
 };

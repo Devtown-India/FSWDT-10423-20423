@@ -1,14 +1,16 @@
+import { Link } from "react-router-dom";
+
 const About = ({ setRoute }) => {
   return (
     <>
       <h1>About</h1>
-      <a style={{ textDecoration: "underline" }} href="/">
+      <Link style={{ textDecoration: "underline" }} to="/">
         Home
-      </a>
+      </Link>
       <br />
-      <a style={{ textDecoration: "underline" }} href="/contact">
+      <Link style={{ textDecoration: "underline" }} to="/contact">
         Contact
-      </a>
+      </Link>
     </>
   );
 };
