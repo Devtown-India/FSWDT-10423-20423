@@ -8,10 +8,10 @@ const rootNode = document.getElementById('root')
 const reactRoot = ReactDOM.createRoot(rootNode);
 
 reactRoot.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <BrowserRouter>
     <App />
     </BrowserRouter>
-  </React.StrictMode>
+  // </React.StrictMode>
 );
 
