@@ -3,13 +3,15 @@ import { Link } from "react-router-dom";
 
 const About = ({ setRoute }) => {
   // state initialises on mount and resets on unmount
-  const [count, setCount] = useState(5);
+  const [count, setCount] = useState(0);
   const [name, setName] = useState("somename");
-  console.log("render");
 
   useEffect(() => {
-    console.log("count changed");
-  }, [count, name]);
+    console.log(`current count value is: ${count}`);
+    return () => {
+      console.log(`unmount`);
+    };
+  }, []);
 
   return (
     <>
