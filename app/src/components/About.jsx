@@ -1,17 +1,18 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-const About = ({ setRoute }) => {
-  // state initialises on mount and resets on unmount
-  const [count, setCount] = useState(0);
-  const [name, setName] = useState("somename");
+const About = () => {
+  const [name, setName] = useState(null);
+  const [err, setErr] = useState();
 
   useEffect(() => {
-    console.log(`current count value is: ${count}`);
-    return () => {
-      console.log(`unmount`);
-    };
-  }, []);
+    // add validatgion logic in here
+    if (name && name.length < 5) {
+      setErr("Name must be at least 5 characters long");
+    } else {
+      setErr(null);
+    }
+  }, [name]);
 
   return (
     <>
@@ -25,11 +26,8 @@ const About = ({ setRoute }) => {
         </Link>
       </nav>
       <h1>About</h1>
-      <h2>{name}</h2>
-      {count}
-      <input type="text" onChange={(e) => setName(e.target.value)} />
-
-      <button onClick={() => setCount((prev) => prev + 1)}>add</button>
+      <input onChange={(e) => setName(e.target.value)} type="text" />
+      {err && <p style={{ color: "crimson" }}>{err}</p>}
     </>
   );
 };
