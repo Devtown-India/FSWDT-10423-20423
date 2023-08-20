@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { withHeading, withLog } from "../hoc/enhanced";
 
 const Contact = ({ setRoute }) => {
   return (
@@ -15,4 +16,4 @@ const Contact = ({ setRoute }) => {
   );
 };
 
-export default Contact;
+export default withLog(withHeading(Contact));
