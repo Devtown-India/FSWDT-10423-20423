@@ -1,0 +1,50 @@
+footer {
+  clear: both;
+  height: 5px;
+  background-color: #ba3200;
+  padding: 1%;
+  padding-left: 0;
+  padding-right: 0;
+  position: relative;
+  margin-top: 200px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  margin: 0 auto;
+}
+.text-footer {
+  margin: 1% auto;
+  width: 183px;
+  color: white;
+}
+footer ul li a {
+  border: none;
+  color: inherit;
+  text-decoration: none;
+  adding-bottom: 1px;
+  cursor: pointer;
+}
+.social-ul {
+  margin: 0 auto;
+  width: 350px;
+  margin-top: -39px;
+}
+.social {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin: 0 10px;
+  line-height: 40px;
+  font-family: Entypo;
+  font-size: 20px;
+  text-align: center;
+  color: #555;
+  border-radius: 50%;
+  background: #fff;
+  overflow: hidden;
+  transition: color 0.3s;
+}
+.social:hover {
+  color: #ba3200;
+  cursor: pointer;
+}

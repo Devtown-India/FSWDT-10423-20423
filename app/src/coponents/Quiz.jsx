@@ -1,4 +1,5 @@
 const Quiz = () => {
+  // storing the index of current question
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [questions, setQuestions] = useState(
     {
@@ -67,6 +68,7 @@ const Quiz = () => {
       answer: 1,
     }
   );
+  // initially answers is an array of null values with length equal to that of the number of questions
   const [answers, setAnswers] = useState(questions.map((q) => null));
 
   return <div className="quiz-container"></div>;

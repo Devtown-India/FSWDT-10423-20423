@@ -1,15 +1,15 @@
 import { useState } from "react";
-import About from "./components/About";
-import Contact from "./components/Contact";
-import Home from "./components/Home";
 import {Routes, Route} from 'react-router-dom';
+import Footer from "./layout/Footer";
+import Navbar from "./layout/Navbar";
 
 const App = () => {
   return (
     <div>
+      <Navbar/>
       <Routes>
-        <Route path="/" element={<Home />} />
       </Routes>
+      <Footer/>
     </div>
   );
 };
