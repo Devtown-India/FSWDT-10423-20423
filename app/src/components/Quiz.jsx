@@ -1,7 +1,11 @@
+import { useState } from "react";
+import Header from "./Header";
+import Question from "./Question";
+
 const Quiz = () => {
   // storing the index of current question
   const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [questions, setQuestions] = useState(
+  const [questions, setQuestions] = useState([
     {
       id: "q1",
       question: "What is the capital of France?",
@@ -66,12 +70,64 @@ const Quiz = () => {
       question: "What is the largest desert in the world?",
       options: ["Sahara", "Arabian", "Gobi", "Kalahari"],
       answer: 1,
-    }
-  );
+    },
+  ]);
   // initially answers is an array of null values with length equal to that of the number of questions
   const [answers, setAnswers] = useState(questions.map((q) => null));
 
-  return <div className="quiz-container"></div>;
+  return (
+    <div className="quiz-container">
+      <Header />
+      <div className="quiz">
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="800px"
+            height="800px"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="go_back"
+          >
+            <g id="Arrow / Caret_Circle_Left">
+              <path
+                id="Vector"
+                d="M13 15L10 12L13 9M21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12Z"
+                stroke="#000000"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
+          <Question />
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="800px"
+            height="800px"
+            viewBox="0 0 24 24"
+            fill="none"
+            className="go_next"
+          >
+            <g id="Arrow / Caret_Circle_Left">
+              <path
+                id="Vector"
+                d="M13 15L10 12L13 9M21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21C16.9706 21 21 16.9706 21 12Z"
+                stroke="#000000"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              />
+            </g>
+          </svg>
+        </div>
+        <div className="submit">
+          <button class="custom-btn btn-7">
+            <span>Submit</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
 };
 
 export default Quiz;
