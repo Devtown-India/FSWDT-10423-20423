@@ -1,7 +1,7 @@
-const Question = () => {
+const Question = ({ data, selectedAnswer, handleAnswer }) => {
   return (
     <div className="question">
-      <h1>What is the largest desert in the world?</h1>
+      <h1>{data.question}</h1>
       <div className="options">
         <div
           style={{
@@ -10,19 +10,23 @@ const Question = () => {
             alignItems: "center",
           }}
         >
-          <button>options 1</button>
-          <button>options 1</button>
-        </div>
-        <br />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "center",
-          }}
-        >
-          <button>options 1</button>
-          <button>options 1</button>
+          {data.options.map((option, index) => {
+            if (selectedAnswer === index) {
+              return (
+                <button
+                  style={{ border: "3px solid #ffbf00" }}
+                  onClick={() => handleAnswer(index, data.id)}
+                >
+                  {option}
+                </button>
+              );
+            }
+            return (
+              <button onClick={() => handleAnswer(index, data.id)}>
+                {option}
+              </button>
+            );
+          })}
         </div>
       </div>
     </div>
