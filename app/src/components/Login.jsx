@@ -1,16 +1,34 @@
 import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log({
-      email,
-      password,
-    });
+  const handleSubmit = async (e) => {
+    try {
+      e.preventDefault();
+      setLoading(true);
+      const { data: response } = await axios.post(
+        "http://localhost:8080/api/auth/login",
+        {
+          email,
+          password,
+        }
+      );
+      const { token } = response.data;
+      localStorage.setItem("token", token);
+      navigate("/todo");
+    } catch (error) {
+      const { message } = error.response.data;
+      console.log(message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -119,19 +137,20 @@ const Login = () => {
                 </a>
               </div>
               <button
+                disabled={loading}
                 type="submit"
                 className="w-full text-white bg-bluze-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
               >
-                Sign in
+                {loading ? "Loading..." : "Sign up"}
               </button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
                 Don’t have an account yet?{" "}
-                <a
-                  href="#"
+                <Link
+                  to="/signup"
                   className="font-medium text-primary-600 hover:underline dark:text-primary-500"
                 >
-                  Sign up
-                </a>
+                  Login
+                </Link>
               </p>
             </form>
           </div>
