@@ -2,10 +2,30 @@ const express = require('express')
 const fs = require("fs/promises");
 const uuid = require("uuid");
 const bcrypt = require("bcryptjs");
-const { generateToken } = require('../utils/auth');
-const { addToDb } = require('../utils/')
+const { generateToken, verifyToken } = require('../utils/auth');
+const { addToDb } = require('../utils/');
 
 const router = express.Router()
+
+router.get("/validateToken/:token", (req, res) => {
+  try {
+    const {token} = req.params
+    const decoded = verifyToken(token)
+    if(!decoded) return res.status(400).json({
+      message: "token invalid or expired",
+      success: false,
+    });
+    return res.status(200).json({
+      message: "token validated",
+      data:decoded
+    })
+  } catch (error) {
+    return res.status(400).json({
+      message: "token invalid or expired",
+      success: false,
+    });
+  }
+})
 
 router.post("/login", async (req, res) => {
     try {
