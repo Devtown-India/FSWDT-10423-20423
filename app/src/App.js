@@ -5,6 +5,8 @@ import Signup from "./components/Signup";
 import Todo from "./components/Todos";
 import LayerOne from "./components/LayerOne";
 import { TodoContext, TodoProvider } from "./contexts/TodoContext";
+import Todos from "./components/Todos";
+import AddTodo from "./components/AddTodo";
 
 const Header = ({ children }) => {
   const context = useContext(TodoContext)
@@ -19,9 +21,8 @@ const App = () => {
   return (
     <div>
       <TodoProvider>
-        <LayerOne />
-      <Header/>
-
+        <AddTodo/>
+        <Todos/>
       </TodoProvider>
     </div>
   );

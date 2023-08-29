@@ -1,41 +1,17 @@
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import axios from "axios";
+import { useContext } from "react";
+import { TodoContext } from "../contexts/TodoContext";
 
-const Todo = () => {
-  const [loading, setLoading] = useState(false);
-  const [user, setUser] = useState(null);
-  const [todos, segtTodos] = useState([]);
-  const navigagte = useNavigate();
-
-  const validateUser = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      if (!token) navigagte("/login");
-      const { data: response } = await axios.get(
-        `http://localhost:8080/api/auth/validateToken/${token}`
-      );
-      setUser(response.data);
-    } catch (error) {
-      localStorage.removeItem("token");
-      navigagte("/login");
-    }
-  };
-
-  useEffect(() => {
-    validateUser();
-  }, []);
-
-  console.log(user);
+const Todos = () => {
+  const { todos } = useContext(TodoContext);
   return (
-    <div>
-      {user && (
-        <>
-          <h1>Todo</h1>
-        </>
-      )}
-    </div>
+    <h1>
+      {todos.map((todo) => (
+        <div key={todo.id}>
+          <h6>{todo.title}</h6>
+        </div>
+      ))}
+    </h1>
   );
 };
 
-export default Todo;
+export default Todos;
