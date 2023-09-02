@@ -1,7 +1,9 @@
+import Header from "./components/Header";
+
 const App = () => {
   return ( 
       <div>
-        Redux
+        <Header/>
       </div>
    );
 }

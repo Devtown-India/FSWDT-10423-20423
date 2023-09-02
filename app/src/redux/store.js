@@ -5,6 +5,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 
 const initialState = {
   todos: [],
+  auth:null
 };
 const middleware = [thunk];
 
