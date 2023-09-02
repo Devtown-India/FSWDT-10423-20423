@@ -1,13 +1,17 @@
-
-export const todosReducer = (state , action) => {
-    switch(action.type) {
-        case "ADD_TODO":
-            const {todos} = state
-            return {
-                ...state,
-                todos: [...todos, action.payload]
-            }
-        default:
-            return state
-    }
-}
+export const todosReducer = (state, action) => {
+  const { todos } = state;
+  switch (action.type) {
+    case "ADD_TODO":
+      return {
+        ...state,
+        todos: [...todos, action.payload],
+      };
+    case "DELETE_TODO":
+      return {
+        ...state,
+        todos: action.payload,
+      };
+    default:
+      return state;
+  }
+};
