@@ -1,23 +1,34 @@
 {
-  "name": "devtown",
+  "name": "server",
   "version": "1.0.0",
-  "description": "package for FSWD-10423-20423 batch",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "nodemon index.js"
-  },
-  "author": "kartik",
-  "license": "MIT",
-  "dependencies": {
-    "axios": "^1.4.0",
-    "bcryptjs": "^2.4.3",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "uuid": "^9.0.0"
+    "build": "node_modules/.bin/webpack --config webpack.config.js --mode=production",
+    "dev": "node_modules/.bin/webpack --config webpack.config.js --mode=development -w "
   },
   "devDependencies": {
-    "nodemon": "^2.0.22"
+    "@babel/core": "7.16.0",
+    "@babel/preset-env": "7.16.4",
+    "babel-loader": "8.2.3",
+    "nodemon": "^2.0.22",
+    "nodemon-webpack-plugin": "^4.8.1",
+    "rimraf": "3.0.2",
+    "webpack": "5.64.3",
+    "webpack-cli": "4.9.1",
+    "webpack-dev-server": "4.5.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^7.5.0",
+    "morgan": "^1.10.0",
+    "winston": "^3.10.0"
   }
 }
