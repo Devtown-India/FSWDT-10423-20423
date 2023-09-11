@@ -4,8 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "node_modules/.bin/webpack --config webpack.config.js --mode=production",
-    "dev": "node_modules/.bin/webpack --config webpack.config.js --mode=development -w "
+    "build": "webpack --config webpack.config.js --mode=production",
+    "dev": "webpack --config webpack.config.js --mode=development -w "
   },
   "devDependencies": {
     "@babel/core": "7.16.0",
