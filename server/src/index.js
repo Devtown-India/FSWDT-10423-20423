@@ -3,8 +3,11 @@ import dotenv from "dotenv";
 dotenv.config(path.join(path.resolve(), ".env"));
 
 import path from "path";
-import logger, { morganMiddleware } from "./logger";
+import logger, { morganMiddleware } from "./utils/logger";
+import { connectDB } from "./utils/db/inde";
 const app = express();
+
+connectDB()
 
 app.use(morganMiddleware);
 
@@ -18,6 +21,5 @@ app.get("/", (req, res) => {
 });
 
 app.listen(process.env.PORT, () => {
-  console.log(`Server is running on port ${process.env.PORT}`);
   logger.info(`Server is running on port ${process.env.PORT}`);
 });
