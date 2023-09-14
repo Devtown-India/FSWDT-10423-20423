@@ -1,6 +1,7 @@
 import express from "express";
 import logger from "../utils/logger";
 import { body, validationResult } from "express-validator";
+import User from "../models/schemas/User";
 const router = express.Router();
 
 router.post(
@@ -15,19 +16,31 @@ router.post(
   body("password")
     .isLength({ min: 3 })
     .withMessage("Password must be at least 3 characters long"),
-  (req, res) => {
+  async (req, res) => {
     try {
       const validation = validationResult(req);
-      if(!validation.isEmpty()){
+      if (!validation.isEmpty()) {
         return res.json({
-            success: false,
-            message:'validation failed',
-            errors: validation.array()
-        })
+          success: false,
+          message: "validation failed",
+          errors: validation.array(),
+        });
       }
-      return res.send("hi");
+      const { firstName, lastName, email, password } = req.body;
+      const user = new User({
+        firstName,
+        lastName,
+        email,
+        password,
+      });
+      await user.save();
+      return res.send({
+        success: true,
+        message: "User created successfully",
+        data: user,
+      });
     } catch (error) {
-      logger.errr(error);
+      logger.error(error);
       return res.json({
         successs: false,
         message: error.message,
