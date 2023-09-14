@@ -14,14 +14,18 @@ const hashPassword = async (password) => {
 
 const verifyPassword = async (password, hashedPassword) => {
     try {
+      console.log({
+          password,
+          hashedPassword
+      })
         return await bcrypt.compare(password, hashedPassword);
     } catch (error) {
         logger.error(error);
-        return null;
+        return false;
     }
 }
 
-const generateAuthToken = (payload)=>jwt.sign(payload, process.env.AUTH_JWT_SECRET, {expiresIn: '1d'})
+const generateAuthToken = (payload)=> jwt.sign(payload, process.env.AUTH_JWT_SECRET, {expiresIn: '1d'})
 
 const verifyAuthToken = (token)=> jwt.verify(token, process.env.AUTH_JWT_SECRET)
 

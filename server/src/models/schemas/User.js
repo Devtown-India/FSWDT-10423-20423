@@ -51,7 +51,7 @@ UserSchema.virtual('initials').get(function(){
 })
 
 UserSchema.pre('save', async function(next){
-    if(this.isNew){
+    if(this.isModified('password')){
         const hashedPassword = await hashPassword(this.password)
         if(hashedPassword){
             this.password = hashedPassword
