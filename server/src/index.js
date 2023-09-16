@@ -4,6 +4,7 @@ dotenv.config(path.join(path.resolve(), ".env"));
 
 import path from "path";
 import authRoutes from './routes/auth'
+import userRoutes from './routes/user'
 import logger, { morganMiddleware } from "./utils/logger";
 import { connectDB } from "./utils/db/inde";
 const app = express();
@@ -13,6 +14,7 @@ connectDB()
 app.use(morganMiddleware);
 app.use(express.json())
 app.use('/api/auth',authRoutes)
+app.use('/api/user',userRoutes)
 
 app.get("/", (req, res) => {
   try {
