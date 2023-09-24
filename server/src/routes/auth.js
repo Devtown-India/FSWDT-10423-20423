@@ -91,9 +91,16 @@ router.post(
       });
       return res.send({
         success: true,
-        message: "User created successfully",
+        message: "token generated successfully",
         data: {
           token,
+          user:{
+            _id: user._id,
+            email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            initials: user.initials,
+          }
         },
       });
     } catch (error) {
