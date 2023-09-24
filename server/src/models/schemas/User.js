@@ -1,5 +1,4 @@
 import mongoose from 'mongoose'
-import { hashPassword } from '../../utils/auth'
 
 const UserSchema = new mongoose.Schema({
     firstName: {
@@ -46,16 +45,5 @@ UserSchema.virtual('initials').get(function(){
     return `${this.firstName[0]}${this.lastName[0]}`
 })
 
-UserSchema.pre('save', async function(next){
-    if(this.isModified('password')){
-        const hashedPassword = await hashPassword(this.password)
-        if(hashedPassword){
-            this.password = hashedPassword
-            next()
-        }else{
-            next(new Error('Could not hash password'))
-        }
-    }
-})
 
 export default mongoose.model('User', UserSchema)
