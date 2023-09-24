@@ -12,6 +12,10 @@ const authReducer = (state = initalState, action) => {
         token: payload.token,
         user: payload.user,
       }
+    case "SIGNUP":
+      return {
+        ...state,
+      }
     default:
       return state;
   }
