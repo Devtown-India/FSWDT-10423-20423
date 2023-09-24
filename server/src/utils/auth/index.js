@@ -29,7 +29,7 @@ const generateAuthToken = (payload)=> jwt.sign(payload, process.env.AUTH_JWT_SEC
 
 const verifyAuthToken = (token)=> jwt.verify(token, process.env.AUTH_JWT_SECRET)
 
-const generateResetToken = (payload)=>jwt.sign(payload, process.env.RESET_PASSWORD_JWT_SECRET, {expiresIn: 120})
+const generateResetToken = (payload)=>jwt.sign(payload, process.env.RESET_PASSWORD_JWT_SECRET, {expiresIn: '1d'})
 
 const verifyResetToken = (token)=> jwt.verify(token, process.env.RESET_PASSWORD_JWT_SECRET)
 
