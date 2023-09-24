@@ -6,6 +6,8 @@ import Signup from "./components/auth/Signup";
 import { useEffect } from "react";
 import { loadUser } from "./redux/actions/auth";
 import { useDispatch } from "react-redux";
+import ForgotPassword from "./components/auth/ForgotPassword";
+import ResetPassword from "./components/auth/ResetPassword";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -19,6 +21,8 @@ const App = () => {
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<Signup />} />
+        <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route path="/reset-password/:token" element={<ResetPassword />} />
       </Routes>
     </>
   );
