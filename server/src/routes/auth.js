@@ -2,7 +2,7 @@ import express from "express";
 import logger from "../utils/logger";
 import { body, validationResult,param } from "express-validator";
 import User from "../models/schemas/User";
-import { generateAuthToken, generateResetToken, verifyPassword, verifyResetToken } from "../utils/auth";
+import { generateAuthToken, generateResetToken, verifyAuthToken, verifyPassword, verifyResetToken } from "../utils/auth";
 const router = express.Router();
 
 router.post(
@@ -160,6 +160,28 @@ router.post(
       }
     }
   );
+
+  router.get("/validate/:token", async (req, res) => {
+    try {
+      const { token } = req.params;
+      const validToken = await verifyAuthToken(token);
+
+      return res.json({
+        success: true,
+        message: "User validated successfully",
+        data: {
+          user: validToken,
+        },
+      });
+    } catch (error) {
+      logger.error(error);
+      return res.json({
+        successs: false,
+        message: error.message,
+        data: null,
+      });
+    }
+  });
 
 
 router.post(
