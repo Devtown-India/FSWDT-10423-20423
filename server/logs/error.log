@@ -1,0 +1,47 @@
+2023-09-11 20:43:29 [31merror[39m: [31mBROKEN[39m
+2023-09-11 20:44:03 [31merror[39m: [31mBROKEN[39m
+2023-09-11 20:45:34 [31merror[39m: [31mBROKEN[39m
+2023-09-11 20:45:36 [31merror[39m: [31mBROKEN[39m
+2023-09-11 20:45:36 [31merror[39m: [31mBROKEN[39m
+2023-09-11 21:00:25 [31merror[39m: [31mBROKEN[39m
+2023-09-11 21:00:55 [31merror[39m: [31mBROKEN[39m
+2023-09-11 21:04:23 [31merror[39m: [31mThe `uri` parameter to `openUri()` must be a string, got "undefined". Make sure the first parameter to `mongoose.connect()` or `mongoose.createConnection()` is a string.[39m
+2023-09-11 21:18:30 [31merror[39m: [31mServer is running on port 8080[39m
+2023-09-14 21:50:01 [31merror[39m: [31mE11000 duplicate key error collection: fswd_10423.users index: email_1 dup key: { email: "test@mail.com" }[39m
+2023-09-14 21:59:04 [31merror[39m: [31mCannot read property 'password' of undefined[39m
+2023-09-14 22:01:11 [31merror[39m: [31mpayload is required[39m
+2023-09-14 22:01:33 [31merror[39m: [31mpayload is required[39m
+2023-09-14 22:01:55 [31merror[39m: [31mpayload is required[39m
+2023-09-14 22:11:35 [31merror[39m: [31mCannot read property 'password' of undefined[39m
+2023-09-14 22:11:55 [31merror[39m: [31mvalid is not defined[39m
+2023-09-16 20:33:08 [31merror[39m: [31mid is not defined[39m
+2023-09-16 20:33:26 [31merror[39m: [31mid is not defined[39m
+2023-09-16 20:33:28 [31merror[39m: [31mid is not defined[39m
+2023-09-16 20:33:29 [31merror[39m: [31mid is not defined[39m
+2023-09-16 20:33:32 [31merror[39m: [31mid is not defined[39m
+2023-09-16 20:33:33 [31merror[39m: [31mid is not defined[39m
+2023-09-16 20:33:45 [31merror[39m: [31muser is not defined[39m
+2023-09-16 20:45:36 [31merror[39m: [31muser.lean is not a function[39m
+2023-09-24 19:17:45 [31merror[39m: [31mE11000 duplicate key error collection: fswd_10423.users index: email_1 dup key: { email: "user@m.com" }[39m
+2023-09-24 19:36:01 [31merror[39m: [31mverifyAuthToken is not defined[39m
+2023-09-24 19:36:02 [31merror[39m: [31mverifyAuthToken is not defined[39m
+2023-09-24 19:36:02 [31merror[39m: [31mverifyAuthToken is not defined[39m
+2023-09-24 19:56:22 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:56:29 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:56:38 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:56:39 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:56:39 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:56:39 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:56:47 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:56:47 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:56:48 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:56:48 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:56:49 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:57:23 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:57:24 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:57:24 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:57:24 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:57:28 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:57:32 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:58:44 [31merror[39m: [31mjwt expired[39m
+2023-09-24 19:58:50 [31merror[39m: [31mjwt expired[39m
