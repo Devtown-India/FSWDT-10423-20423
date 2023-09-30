@@ -8,6 +8,7 @@ import { loadUser } from "./redux/actions/auth";
 import { useDispatch } from "react-redux";
 import ForgotPassword from "./components/auth/ForgotPassword";
 import ResetPassword from "./components/auth/ResetPassword";
+import CreatePost from "./components/posts/Create";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -23,6 +24,7 @@ const App = () => {
         <Route path="/signup" element={<Signup />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
         <Route path="/reset-password/:token" element={<ResetPassword />} />
+        <Route path="/createPost" element={<CreatePost />} />
       </Routes>
     </>
   );
