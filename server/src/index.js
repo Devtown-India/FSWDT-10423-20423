@@ -6,6 +6,7 @@ import path from "path";
 import cors from "cors";
 import authRoutes from './routes/auth'
 import userRoutes from './routes/user'
+import postRoutes from './routes/post'
 import logger, { morganMiddleware } from "./utils/logger";
 import { connectDB } from "./utils/db/inde";
 const app = express();
@@ -19,6 +20,7 @@ app.use(morganMiddleware);
 app.use(express.json())
 app.use('/api/auth',authRoutes)
 app.use('/api/user',userRoutes)
+app.use('/api/post',postRoutes)
 
 app.get("/", (req, res) => {
   try {
