@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { toast } from "react-hot-toast";
 import customAxios from "../../utils/axios";
 import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
 
 const CreatePost = () => {
   const [imagePreview, setImagePreview] = useState(null);
@@ -10,6 +11,14 @@ const CreatePost = () => {
   const [image, setImage] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+  const { loggedIn } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    console.log(loggedIn);
+
+    if (loggedIn === null) return;
+    if (!loggedIn) navigate("/login");
+  }, [loggedIn]);
 
   const handlePreview = (e) => {
     const file = e.target.files[0];
