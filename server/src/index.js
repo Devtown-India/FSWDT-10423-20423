@@ -1,6 +1,7 @@
 import express from "express";
 import dotenv from "dotenv";
 dotenv.config(path.join(path.resolve(), ".env"));
+import fs from "fs";
 
 import path from "path";
 import cors from "cors";
@@ -21,6 +22,16 @@ app.use(express.json())
 app.use('/api/auth',authRoutes)
 app.use('/api/user',userRoutes)
 app.use('/api/post',postRoutes)
+
+app.get("/image/:filename", async (req, res) => {
+  const { filename } = req.params;
+  const file = path.join(
+    path.resolve(),
+    `/src/public/uploads/${filename}`
+  );
+  const data = await fs.promises.readFile(file);
+  res.send(data);
+});
 
 app.get("/", (req, res) => {
   try {
